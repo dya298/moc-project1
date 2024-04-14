@@ -1,0 +1,27 @@
+.main {
+  align-items: center;
+  text-align: center;
+}
+mat-card-title {
+  font: bold;
+  font-size: xx-large;
+}
+mat-form-field {
+  width: 500px;
+}
+.button-clear {
+  height: 50px;
+  width: 150px;
+  margin-right: 190px;
+}
+.button-create-update {
+  height: 50px;
+  width: 150px;
+  margin-left: 10px;
+}
+mat-card-actions {
+  display: block;
+}
+mat-card-header {
+  display: block;
+}

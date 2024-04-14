@@ -1,0 +1,124 @@
+<div class="main">
+  <div class="example-container">
+    <form>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Create new task </mat-card-title>
+        </mat-card-header>
+        <hr />
+        <div>
+          <mat-form-field appearance="outline" hintLabel="Max 50 characters">
+            <mat-label>Enter new task</mat-label>
+            <input
+              id="inputTaskName"
+              matInput
+              #inputTaskName
+              maxlength="50"
+              placeholder="Ex. Create new API"
+              [formControl]="taskName"
+              (blur)="updateErrorMessageTaskName()"
+              required
+              [value]="valueTaskName"
+              (keyup)="onKeyUpTaskName(inputTaskName.value)"
+            />
+            @if (taskName.invalid) {
+            <mat-error>{{ errorMessage }}</mat-error>
+            }
+
+            <mat-icon
+              matTooltip="Click i to display full task name here"
+              matSuffix
+              ><span (click)="onClickPopupInfo()" class="material-icons">
+                info
+              </span></mat-icon
+            >
+            <mat-hint align="end">{{ inputTaskName.value.length }}/50</mat-hint>
+          </mat-form-field>
+        </div>
+        <hr />
+        <div>
+          <mat-form-field appearance="outline" hintLabel="Max 1000 characters">
+            <mat-label>Enter description</mat-label>
+
+            <textarea
+              style="height: 50px"
+              matInput
+              #inputDescription
+              maxlength="1000"
+              placeholder="Ex. Using nodejs for create new API"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="10"
+              [formControl]="taskDescription"
+              (blur)="updateErrorMessageDescription()"
+              [value]="valueTaskDescription"
+              (keyup)="onKeyUpTaskDescription(inputDescription.value)"
+            ></textarea>
+            @if (taskDescription.invalid) {
+            <mat-error>{{ errorMessage }}</mat-error>
+            }
+            <mat-icon
+              matTooltip="Click i to display full task description here"
+              matSuffix
+              (click)="onClickPopupDescription()"
+              >info</mat-icon
+            >
+            <mat-hint align="end"
+              >{{ inputDescription.value.length }}/1000</mat-hint
+            >
+          </mat-form-field>
+        </div>
+        <hr />
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Choose due date</mat-label>
+            <input
+              #inputTaskDate
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="date"
+              matInput
+              [matDatepicker]="picker"
+              (dateChange)="onDateChange(date)"
+            />
+            <mat-hint>MM/DD/YYYY HH:MM</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-card-actions>
+            <button
+              class="button-clear"
+              mat-flat-button
+              color="primary"
+              (click)="onClearInfo()"
+            >
+              Clear
+            </button>
+            <button
+              *ngIf="!flagEdit"
+              class="button-create-update"
+              mat-flat-button
+              color="accent"
+              (click)="onCreateInfo()"
+            >
+              Create
+            </button>
+            <button
+              *ngIf="flagEdit"
+              class="button-create-update"
+              mat-flat-button
+              color="accent"
+              (click)="onEditTodo()"
+            >
+              Update
+            </button>
+          </mat-card-actions>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</div>

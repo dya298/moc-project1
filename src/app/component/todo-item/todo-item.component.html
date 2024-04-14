@@ -1,0 +1,37 @@
+<div>
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Task name: {{ todo.title }} </mat-panel-title>
+      <button *ngIf="indexPage === 0" (click)="onChangeType(todo)">DONE</button>
+      <button *ngIf="indexPage === 0" (click)="onEditTodo(todo)">EDIT</button>
+      <button *ngIf="indexPage === 0" (click)="onDeleteTodo(todo)">
+        DELETE
+      </button>
+      <mat-panel-description>
+        {{ !panelOpenState ? "Expand here for see details" : "Collapse all" }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Description: {{ todo.description }}</p>
+    <p>Due Date: {{ formatDate(todo.created_at) }}</p>
+    <p *ngIf="indexPage === 1">
+      Actual Due Date: {{ formatDate(todo.done_at) }}
+    </p>
+    <p *ngIf="indexPage === 1">
+      Deviation:
+      {{
+        "Day:" +
+          todo.deviation.day +
+          " Hour: " +
+          todo.deviation.hour +
+          " Minute: " +
+          todo.deviation.minute +
+          " Second: " +
+          todo.deviation.second
+      }}
+    </p>
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
+</div>

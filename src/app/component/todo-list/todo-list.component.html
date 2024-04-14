@@ -1,0 +1,7 @@
+<app-todo-item
+  *ngFor="let todo of todoList"
+  (ChangeType)="onChangeTypeMain($event)"
+  (deleteTodo)="onDeleteTodo($event)"
+  (EditTodo)="onEditTodo($event)"
+  [todo]="todo"
+></app-todo-item>

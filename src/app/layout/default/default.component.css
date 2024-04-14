@@ -1,0 +1,20 @@
+.main {
+  width: 100%;
+  height: 100%;
+  background: #1e88e5;
+}
+
+mat-card {
+  top: 30%;
+  position: relative;
+  padding: 2dvh;
+  margin: auto;
+  max-width: 550px;
+  text-align: center;
+  max-height: 550px;
+  background: whitesmoke;
+}
+
+.header {
+  text-align: center;
+}
